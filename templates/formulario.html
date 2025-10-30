@@ -1,25 +1,59 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora del Gasto energetico</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body style="background-color: aqua;">
-    
-    <div class="container" style="align-items: center;">
-        <div class="card" style="width: 100rem; h">
+    {%extends "base.html"%}
+    {%block contenido%}
+    <div class="row" style="align-items: center; margin-top: 100px;">
+        <div class="card" style="width: 100rem; height:200rem:">
             <div class="card-header" style=" background-color: blue;">
-                <p class="fw-bolder">Calculadora de gasto Energeticos (TMB Y GET)</p>
+                <p class="fw-bolder " style="color: azure;">Calculadora de gasto Energeticos (TMB Y GET)</p>
             </div>
 
             <div class="card-body">
                 
+                <form action="/resultado" method="POST">
+
+                    
+                <div class="row">
+                    <label> Peso(kg) </label>
+                    <input type="number" id="peso" name="peso"  value="{{request.form.get('peso','')}}">
+                    
+                    </input>
+                </div>
+
+                <div class="row">
+                    <label> Altura(cm) </label>
+                    <input type="text" id="altu" name="altu" value="{{request.form.get('altu','')}}">
+                    
+                    </input>
+                </div>
+
+                <div class="row">
+                    <label> Edad(años) </label>
+                    <input type="number" id="edad" name="edad" value="{{request.form.get('edad','')}}"> 
+                    
+                    </input>
+                    </div>
+
+                <div class="row">
+                    <label> Genero </label>
+                    <select name="genero">
+                        <option id="hombre" name="hombre" value="hombre">Hombre</option>
+                        <option id="mujer" name="mujer" value="mujer">Mujer</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <label> Nivel de actividad fisica </label>
+                    <select name="activi">
+                        <option value="sedentario">Sedentario</option>
+                        <option value="ligera">Actividad Ligera</option>
+                        <option value="moderada">Actividad Moderada</option>
+                        <option value="alta">Actividad Alta</option>
+                    </select>
+                </div>
+
+                
+                    <input type="submit" value="Calcular">  </input>
+                </form>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-</html>
+    {%endblock%}
